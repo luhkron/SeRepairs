@@ -18,6 +18,47 @@ var/
 wheels/
 *.egg-info/
 .installed.cfg
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Database
+*.db
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Dependencies
+node_modules/
+venv/
+env/
+
+# Logs
+*.log
+
+# Local development
+instance/
+
+# Production files
+*.pyc
+__pycache__/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Build files
+build/
+dist/
+*.egg-info/
 *.egg
 
 # Virtual Environment
