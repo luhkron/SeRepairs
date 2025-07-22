@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+
+{% block title %}Home - SeRepairs{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero text-center text-white py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">Streamline Your Truck Maintenance Operations</h1>
+                <p class="lead mb-5">Efficiently manage your fleet's maintenance schedule, track repairs, and reduce downtime with our comprehensive truck maintenance solution.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{{ url_for('report_issue_page') }}" class="btn btn-light btn-lg px-4">
+                        <i class="bi bi-plus-circle me-2"></i> Report an Issue
+                    </a>
+                    <a href="{{ url_for('view_reports') }}" class="btn btn-outline-light btn-lg px-4">
+                        <i class="bi bi-list-check me-2"></i> View Reports
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="custom-shape-divider-bottom">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Why Choose Our Maintenance Solution?</h2>
+            <p class="text-muted lead">Designed to make your fleet management easier and more efficient</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm animate-fade-in" style="animation-delay: 0.1s;">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-4" style="width: 60px; height: 60px;">
+                            <i class="bi bi-speedometer2 fs-3"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Real-time Monitoring</h5>
+                        <p class="card-text text-muted">Track your fleet's maintenance status in real-time and receive instant alerts for upcoming services.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper bg-success bg-opacity-10 text-success rounded-circle p-3 mb-4" style="width: 60px; height: 60px;">
+                            <i class="bi bi-wrench-adjustable fs-3"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Efficient Repairs</h5>
+                        <p class="card-text text-muted">Streamline your repair process with automated work orders and technician assignments.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm animate-fade-in" style="animation-delay: 0.3s;">
+                    <div class="card-body p-4">
+                        <div class="icon-wrapper bg-info bg-opacity-10 text-info rounded-circle p-3 mb-4" style="width: 60px; height: 60px;">
+                            <i class="bi bi-graph-up fs-3"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Analytics & Reports</h5>
+                        <p class="card-text text-muted">Gain valuable insights with detailed analytics and customizable reports on your fleet's performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-6 col-md-3 text-center">
+                <h2 class="display-4 fw-bold text-primary">99.9%</h2>
+                <p class="text-muted">Uptime</p>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+                <h2 class="display-4 fw-bold text-primary">500+</h2>
+                <p class="text-muted">Trucks Managed</p>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+                <h2 class="display-4 fw-bold text-primary">24/7</h2>
+                <p class="text-muted">Support</p>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+                <h2 class="display-4 fw-bold text-primary">50+</h2>
+                <p class="text-muted">Workshops</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="fw-bold mb-4">Ready to Optimize Your Fleet Maintenance?</h2>
+                <p class="lead text-muted mb-5">Join hundreds of companies that trust our platform to keep their fleets running smoothly.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="{{ url_for('report_issue_page') }}" class="btn btn-primary btn-lg px-4">
+                        <i class="bi bi-plus-circle me-2"></i> Get Started
+                    </a>
+                    <a href="#" class="btn btn-outline-secondary btn-lg px-4">
+                        <i class="bi bi-play-circle me-2"></i> Watch Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">What Our Clients Say</h2>
+            <p class="text-muted">Don't just take our word for it</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="avatar bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="bi bi-person-fill fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">John Smith</h6>
+                                <small class="text-muted">Fleet Manager, TransLogistics</small>
+                            </div>
+                        </div>
+                        <p class="card-text">"This platform has transformed how we manage our fleet maintenance. The real-time tracking and automated alerts have saved us countless hours and reduced our downtime significantly."</p>
+                        <div class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="avatar bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="bi bi-person-fill fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Sarah Johnson</h6>
+                                <small class="text-muted">Operations Director, QuickHaul</small>
+                            </div>
+                        </div>
+                        <p class="card-text">"The analytics dashboard provides us with insights we never had before. We've been able to reduce our maintenance costs by 30% since we started using this platform."</p>
+                        <div class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="avatar bg-info bg-opacity-10 text-info rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                <i class="bi bi-person-fill fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Michael Chen</h6>
+                                <small class="text-muted">CTO, Global Freight</small>
+                            </div>
+                        </div>
+                        <p class="card-text">"The integration with our existing systems was seamless, and the support team was incredibly helpful throughout the process. Highly recommended for any fleet management team."</p>
+                        <div class="text-warning">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
+    }
+    
+    .custom-shape-divider-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        line-height: 0;
+        transform: rotate(180deg);
+    }
+
+    .custom-shape-divider-bottom svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 150px;
+    }
+
+    .custom-shape-divider-bottom .shape-fill {
+        fill: #FFFFFF;
+    }
+    
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .avatar {
+        background-color: rgba(67, 97, 238, 0.1);
+    }
+    
+    .icon-wrapper {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fade-in {
+        animation: fadeIn 0.6s ease-out forwards;
+        opacity: 0;
+    }
+</style>
+{% endblock %}

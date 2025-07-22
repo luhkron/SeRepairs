@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">Report New Issue</div>
+            <div class="card-body">
+                <form id="report-form">
+                    <div class="mb-3">
+                        <label for="truck_id" class="form-label">Truck ID</label>
+                        <select class="form-select" id="truck_id" name="truck_id" required>
+                            <option value="" selected disabled>Select a truck</option>
+                            <option value="TRK101">TRK101 - Volvo FH16</option>
+                            <option value="TRK102">TRK102 - Scania R500</option>
+                            <option value="TRK103">TRK103 - Mercedes Actros</option>
+                            <option value="TRK104">TRK104 - MAN TGX</option>
+                            <option value="TRK105">TRK105 - DAF XF</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="driver_id" class="form-label">Driver ID</label>
+                        <input type="text" class="form-control" id="driver_id" name="driver_id" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="issue_type" class="form-label">Issue Type</label>
+                        <select class="form-select" id="issue_type" name="issue_type" required>
+                            <option value="" selected disabled>Select issue type</option>
+                            <option value="engine">Engine</option>
+                            <option value="brakes">Brakes</option>
+                            <option value="electrical">Electrical</option>
+                            <option value="tires">Tires</option>
+                            <option value="suspension">Suspension</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="issue_description" class="form-label">Issue Description</label>
+                        <textarea class="form-control" id="issue_description" name="issue_description" rows="5" required 
+                                  placeholder="Please provide a detailed description of the issue..."></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="urgency" class="form-label">Urgency Level</label>
+                        <select class="form-select" id="urgency" name="urgency" required>
+                            <option value="low">Low - Can be addressed during regular maintenance</option>
+                            <option value="medium" selected>Medium - Should be addressed soon</option>
+                            <option value="high">High - Needs immediate attention</option>
+                        </select>
+                    </div>
+                    
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle"></i> Please ensure all information is accurate before submitting. 
+                        A service request will be created based on this report.
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ url_for('view_reports') }}" class="btn btn-secondary me-md-2">Cancel</a>
+                        <button type="submit" class="btn btn-primary">
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                            Submit Report
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('report-form');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const spinner = submitBtn.querySelector('.spinner-border');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Show loading state
+        submitBtn.disabled = true;
+        spinner.classList.remove('d-none');
+        
+        // Get form data
+        const formData = {
+            truck_id: document.getElementById('truck_id').value,
+            driver_id: document.getElementById('driver_id').value,
+            issue_type: document.getElementById('issue_type').value,
+            issue_description: document.getElementById('issue_description').value,
+            urgency: document.getElementById('urgency').value,
+            status: 'pending'
+        };
+        
+        // Send data to server
+        fetch('/api/report-issue', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                // Show success message
+                const alert = document.createElement('div');
+                alert.className = 'alert alert-success alert-dismissible fade show';
+                alert.role = 'alert';
+                alert.innerHTML = `
+                    <i class="bi bi-check-circle"></i> ${data.message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                `;
+                form.prepend(alert);
+                
+                // Reset form
+                form.reset();
+                
+                // Redirect to reports page after 2 seconds
+                setTimeout(() => {
+                    window.location.href = '{{ url_for("view_reports") }}';
+                }, 2000);
+            } else {
+                throw new Error(data.error || 'Failed to submit report');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            
+            // Show error message
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-danger alert-dismissible fade show';
+            alert.role = 'alert';
+            alert.innerHTML = `
+                <i class="bi bi-exclamation-triangle"></i> ${error.message || 'Failed to submit report. Please try again.'}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            form.prepend(alert);
+        })
+        .finally(() => {
+            // Reset button state
+            submitBtn.disabled = false;
+            spinner.classList.add('d-none');
+        });
+    });
+});
+</script>
+{% endblock %}
